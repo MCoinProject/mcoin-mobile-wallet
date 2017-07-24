@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-navbar color="main-theme">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+        <ion-row>
+
+            <!-- Image -->
+            <ion-col col-12 class="picture_wrapper">
+                <img src="{{ user != null ? user.profile.profile_picture : 'images/default_avatar.png'}}" alt="">
+            </ion-col>
+            <!-- / Image -->
+
+            <!-- Profile -->
+            <ion-col col-12>
+            	<ion-list>
+
+					<!-- <ion-item>
+            			<h2>Email</h2>
+            			<p>{{ user != null ? user.email : ''}}</p>
+            		</ion-item>
+
+            		<ion-item>
+            			<h2>Name</h2>
+            			<p>{{ user != null ? user.profile.name : ''}}</p>
+            		</ion-item>
+
+            		<ion-item>
+            			<h2>Phone Number</h2>
+            			<p>{{ user != null ? user.profile.phone_number : ''}}</p>
+            		</ion-item> -->
+
+                    <ion-item>
+                        <ion-label floating>Email</ion-label>
+                        <ion-input type="email" [(ngModel)]="updateData.email" disabled></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="updateData.name" [disabled]="disableForm"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Phone Number</ion-label>
+                        <ion-input type="number" [(ngModel)]="updateData.phone_number" [disabled]="disableForm"></ion-input>
+                    </ion-item>
+
+            	</ion-list>
+
+                <button ion-button outline col-12 *ngIf="!disableForm" (click)="updateProfile()">Update</button>
+                
+            </ion-col>
+            <!-- / Profile -->
+
+        </ion-row>
+    </ion-grid>
+
+    <ion-fab right bottom #fab>
+    	<button ion-fab class="fab-more"><ion-icon name="add"></ion-icon></button>
+    	<ion-fab-list side="top">
+    		<button ion-fab (click)="openCamera(fab)" class="fab-child">
+                <ion-icon name="image" type="button"></ion-icon>
+                <ion-label>Change Profile Picture</ion-label>
+            </button>
+    		<button ion-fab (click)="enableEditting(fab)" class="fab-child">
+                <ion-icon name="create" type="button"></ion-icon>
+                <ion-label>Update Profile</ion-label>
+            </button>
+    	</ion-fab-list>
+    </ion-fab>
+
+</ion-content>

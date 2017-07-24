@@ -1,18 +1,160 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar color="main-theme">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Wallet</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <ion-grid>
+        <ion-row>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+            <!-- Total Balance -->
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-header class="header-center">
+                        <ion-icon name="logo-usd" color="light-green"></ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <h2><strong>Balance</strong></h2>
+                        <hr>
+                        <p>{{balance}} ETP</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- / Total Balance -->
+
+            <!-- Total Transfered -->
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-header class="header-center">
+                        <ion-icon name="trending-up" color="orange"></ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <h2><strong>Total Transfered</strong></h2>
+                        <hr>
+                        <p>{{transfered}} ETP</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- / Total Transfered -->
+
+            <!-- Total Received -->
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-header class="header-center">
+                        <ion-icon name="trending-down" color="dark-green"></ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <h2><strong>Total Received</strong></h2>
+                        <hr>
+                        <p>{{received}} ETP</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- / Total Received -->
+
+            <!-- Total Received -->
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-header class="header-center">
+                        <ion-icon name="stats" color="light-blue"></ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <h2><strong>ETP Price</strong></h2>
+                        <hr>
+                        <p>{{dncPrice | number:'1.2-2'}} USD</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- / Total Received -->
+        </ion-row>
+
+        <ion-row>
+
+            <h4 *ngIf="transactions != null && transactions.length > 0">Last {{transactions != null ? transactions.length : ''}} Transactions</h4>
+            <ion-slides>
+
+                <ion-slide *ngFor="let txn of transactions">
+                    <ion-card color="{{txn.type == 'receive' ? 'orange' : 'light-green'}}">
+                        <ion-icon name="trending-up" class="card-icon" color="white"></ion-icon>
+                        <ion-card-header>
+                            {{ txn.created_at | date: 'dd MMM yyyy, h:mm a' }}
+                        </ion-card-header>
+                        <ion-card-content>
+                            <table>
+                                <tr>
+                                    <th>Amount:</th>
+                                    <td>{{ txn.amount }} ETP</td>
+                                </tr>
+                                <tr>
+                                    <th>{{txn.type == 'receive' ? 'From' : 'To'}}:</th>
+                                    <td>{{txn.type == 'receive' ? txn.user.profile.name : txn.receiver_address}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{{ txn.target_email }}</td>
+                                </tr>
+                            </table>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+
+                <!-- <ion-slide>
+                    <ion-card color="transfer-orange">
+                        <ion-icon name="trending-up" class="card-icon" color="white"></ion-icon>
+                        <ion-card-header>
+                            15 June 2017, 1:25 pm
+                        </ion-card-header>
+                        <ion-card-content>
+                            <table>
+                                <tr>
+                                    <th>Amount:</th>
+                                    <td>4 ETP</td>
+                                </tr>
+                                <tr>
+                                    <th>To:</th>
+                                    <td>khsbdkdshbfdhsfbjsdhbfdsdfsdf</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>lala@lala.lala</td>
+                                </tr>
+                            </table>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+
+                <ion-slide>
+                    <ion-card color="receive-green">
+                        <ion-icon name="trending-down" class="card-icon" color="white"></ion-icon>
+                        <ion-card-header>
+                            15 June 2017, 1:25 pm
+                        </ion-card-header>
+                        <ion-card-content>
+                            <table>
+                                <tr>
+                                    <th>Amount:</th>
+                                    <td>4 ETP</td>
+                                </tr>
+                                <tr>
+                                    <th>From:</th>
+                                    <td>Malik</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>lala@lala.lala</td>
+                                </tr>
+                            </table>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide> -->
+
+            </ion-slides>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>

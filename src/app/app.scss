@@ -14,3 +14,75 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.emptyMessage{
+	// background-color: #9AA0AA;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 15px;
+	text-align: center;
+
+	ion-icon{
+		font-size: 3em;
+	}
+}
+
+.menu-header{
+	background-image: url('../images/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 11em;
+	padding: 1em;
+	@include flexbox();
+	@include flex-direction(column);
+	@include justify-content(space-around);
+
+	ion-avatar{
+		margin-bottom: 1.5em;
+		img{
+			width: 4em;
+			border-radius: 50%;
+		}
+	}
+
+	h5, p {
+		color: map-get($colors, white);
+		margin: 0em;
+	}
+}
+
+.fab {
+	contain: layout;
+}
+
+.fab-more{
+	background-color: #37474f;
+}
+
+.fab-child{
+	background-color: #546e7a;
+
+	ion-icon{
+		color: #fefefe;
+	}
+}
+
+button[ion-fab] {
+	overflow: visible;
+	position: relative;
+
+	ion-label {
+		position: absolute;
+		top: -8px;
+		right: 40px;
+
+		color: white;
+		background-color: rgba(0,0,0,0.7);
+		line-height: 24px;
+		padding: 4px 8px;
+		border-radius: 4px;
+	}
+}
