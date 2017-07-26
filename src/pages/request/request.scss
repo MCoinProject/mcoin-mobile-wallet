@@ -1,0 +1,23 @@
+page-request {
+	table{
+		width: 100%;
+		
+		.pull-left{
+			float: left !important;
+			width: 60%;
+			overflow: hidden;
+			padding-right: .5em;
+			text-align: left;
+		}
+		.pull-right{
+			float: right !important;
+			width: 40%;
+			padding-left: .5em;
+			text-align: right;
+
+			&.green{
+				color: map-get($colors, receive-green) !important;
+			}
+		}
+	}
+}

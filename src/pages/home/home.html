@@ -79,7 +79,7 @@
             <ion-slides>
 
                 <ion-slide *ngFor="let txn of transactions">
-                    <ion-card color="{{txn.type == 'receive' ? 'orange' : 'light-green'}}">
+                    <ion-card color="{{txn.type == 'receive' ? 'light-green' : 'orange'}}">
                         <ion-icon name="trending-up" class="card-icon" color="white"></ion-icon>
                         <ion-card-header>
                             {{ txn.created_at | date: 'dd MMM yyyy, h:mm a' }}

@@ -23,6 +23,8 @@ export class ApiServiceProvider {
     public dashboardAPI:String = "profile/dashboard";
     public transferHistoriesAPI:String = "transactions/transfer/histories";
     public transferAPI:String = "transactions/transfer";
+    public requestHistoriesAPI:String = "transactions/request/histories";
+    public requestAPI:String = "transactions/request";
 
     public getRegisterAPI() {
         return this.root+"/"+this.register;
@@ -55,4 +57,13 @@ export class ApiServiceProvider {
     public getTransferAPI(){
         return this.root+"/"+this.transferAPI;
     }
+
+    public getRequestHistoriesAPI(){
+        return this.root+"/"+this.requestHistoriesAPI;
+    }
+
+    public getRequestAPI(){
+        return this.root+"/"+this.requestAPI;
+    }
+
 }

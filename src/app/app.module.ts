@@ -10,6 +10,8 @@ import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransferPage } from '../pages/transfer/transfer';
 import { TransferFormPage } from '../pages/transfer-form/transfer-form';
+import { RequestPage } from '../pages/request/request';
+import { RequestFormPage } from '../pages/request-form/request-form';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -29,6 +31,8 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     ProfilePage,
     TransferPage,
     TransferFormPage,
+    RequestPage,
+    RequestFormPage,
 
     HomePage,
     ListPage
@@ -47,6 +51,8 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     ProfilePage,
     TransferPage,
     TransferFormPage,
+    RequestPage,
+    RequestFormPage,
     
     HomePage,
     ListPage

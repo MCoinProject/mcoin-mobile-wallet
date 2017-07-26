@@ -14,8 +14,9 @@ import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransferPage } from '../pages/transfer/transfer';
+import { RequestPage } from '../pages/request/request';
 
-import { ListPage } from '../pages/list/list';
+// import { ListPage } from '../pages/list/list';
 
 @Component({
     templateUrl: 'app.html'
@@ -46,8 +47,9 @@ export class WalletApp {
         this.pages = [
         { title: 'Wallet', component: HomePage , icon: "home"},
         { title: 'Profile', component: ProfilePage, icon: "contact" },
-        { title: 'List', component: ListPage, icon: "list" },
+        // { title: 'List', component: ListPage, icon: "list" },
         { title: 'Transfer', component: TransferPage, icon: "trending-up" },
+        { title: 'Request', component: RequestPage, icon: "trending-down" },
         ];
 
     }

@@ -1,8 +1,9 @@
 <ion-content class="login-content" padding>
 	<ion-row class="logo-row">
 		<ion-col></ion-col>
-		<ion-col width-67>
-			<img src="http://placehold.it/300x200"/>
+		<ion-col>
+			<!-- <img src="http://placehold.it/300x200"/> -->
+			<h2>ETP Wallet</h2>
 		</ion-col>
 		<ion-col></ion-col>
 	</ion-row>
@@ -13,7 +14,7 @@
 					<ion-list inset>
 						
 						<ion-item>
-							<ion-input type="text" placeholder="Email" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
+							<ion-input type="email" placeholder="Email" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
 						</ion-item>
 						
 						<ion-item>

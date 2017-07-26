@@ -40,48 +40,47 @@ import { Storage } from '@ionic/storage';
 /*
 *	Import Page
 */
-import { TransferFormPage } from '../transfer-form/transfer-form';
+import { RequestFormPage } from '../request-form/request-form';
 
 /*
 *	API Service
 */
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
-
 /**
- * Generated class for the TransferPage page.
+ * Generated class for the RequestPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 
  @Component({
- 	selector: 'page-transfer',
- 	templateUrl: 'transfer.html',
+ 	selector: 'page-request',
+ 	templateUrl: 'request.html',
  	providers: [DatePipe, DecimalPipe]
  })
- export class TransferPage {
+ export class RequestPage {
 
- 	/*
- 	* variables
- 	*/
- 	public user : any;
- 	public token: any;
- 	public loading: any;
- 	public transactions: any[] = [];
- 	public nextUrl: any;
+	/*
+	* variables
+	*/
+	public user : any;
+	public token: any;
+	public loading: any;
+	public requests: any[] = [];
+	public nextUrl: any;
 
- 	apiService:ApiServiceProvider = new ApiServiceProvider();
+	apiService:ApiServiceProvider = new ApiServiceProvider();
 
- 	constructor(private nav: NavController, private modalCtrl: ModalController, private userProvider: UserServiceProvider, public storage:Storage, public http: Http, public datePipe: DatePipe, public decimalPipe: DecimalPipe, public loadingCtrl: LoadingController) {
- 		this.getUserData();
- 		this.userProvider.getToken().then(token => {
- 			this.token = token;
- 			this.getTransferHistories();
- 		});
- 	}
+	constructor(private nav: NavController, private modalCtrl: ModalController, private userProvider: UserServiceProvider, public storage:Storage, public http: Http, public datePipe: DatePipe, public decimalPipe: DecimalPipe, public loadingCtrl: LoadingController) {
+		this.getUserData();
+		this.userProvider.getToken().then(token => {
+			this.token = token;
+			this.getRequestHistories();
+		});
+	}
 
  	public haveData(){
- 		if (this.transactions.length > 0)
+ 		if (this.requests.length > 0)
  			return true;
 
  		return false;
@@ -95,7 +94,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
 	doInfinite(infiniteScroll) {
 	    console.log('Begin async operation');
-	    this.getTransferHistories().then(()=>{
+	    this.getRequestHistories().then(()=>{
 	    	infiniteScroll.complete();
 	    	if(!this.nextUrl){
 	    		infiniteScroll.enable(false);
@@ -105,8 +104,8 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 	    });
 	}
 
- 	public getTransferHistories(){
- 		
+	public getRequestHistories(){
+
  		return new Promise(resolve => {
 
  			var apiLink = "";
@@ -115,8 +114,8 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 	 		if(this.nextUrl){
 	 			apiLink = this.nextUrl;
 	 		} else {
-	 			this.transactions = [];
-	 			apiLink = this.apiService.getTransferHistoriesAPI();
+	 			this.requests = [];
+	 			apiLink = this.apiService.getRequestHistoriesAPI();
 	 		}
 			
 			// Request options
@@ -140,11 +139,11 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 			    // if result success
 			    if(result.success){
 			        // this.transactions = result.transaction.data;
-			        for(var indx = 0; indx < result.transaction.data.length; indx ++){
-			        	this.transactions.push(result.transaction.data[indx]);
+			        for(var indx = 0; indx < result.request.data.length; indx ++){
+			        	this.requests.push(result.request.data[indx]);
 			        }
-			        if(result.transaction.next_page_url != null){
-			        	this.nextUrl = result.transaction.next_page_url;
+			        if(result.request.next_page_url != null){
+			        	this.nextUrl = result.request.next_page_url;
 			        } else {
 			        	this.nextUrl = null;
 			        }
@@ -163,15 +162,15 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  			fab.close();
  		}
 
- 		let modal = this.modalCtrl.create(TransferFormPage);
+ 		let modal = this.modalCtrl.create(RequestFormPage);
  		modal.onDidDismiss(data => {
  		     
  		});
  		modal.present();
  	}
 
- 	ionViewDidLoad() {
- 		console.log('ionViewDidLoad TransferPage');
- 	}
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad RequestPage');
+	}
 
- }
+}

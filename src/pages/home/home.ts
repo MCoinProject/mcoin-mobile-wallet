@@ -63,6 +63,12 @@ export class HomePage {
 	@ViewChild(Slides) slides: Slides;
 
 	constructor(private nav: NavController, private userProvider: UserServiceProvider, public storage:Storage, public http: Http, public datePipe: DatePipe, public decimalPipe: DecimalPipe, public loadingCtrl: LoadingController) {
+		this.loading = this.loadingCtrl.create({
+			content: 'Please wait...',
+			dismissOnPageChange: true
+		});
+		this.loading.present();
+
 		this.getUserData();
 		this.userProvider.getToken().then(token => {
 			this.token = token;
@@ -95,6 +101,7 @@ export class HomePage {
 		this.http.get(apiLink, opt)
 		.subscribe(data => {
 
+			this.loading.dismiss();
 		    // parse result
 		    var result = JSON.parse(data['_body']);
 

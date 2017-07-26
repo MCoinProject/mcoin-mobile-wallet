@@ -3,7 +3,7 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Transfer</ion-title>
+		<ion-title>Request</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
 
 	<div class="emptyMessage" *ngIf="!haveData()">
 	    <ion-icon name="repeat"></ion-icon>
-	    <h5>You don't have any transfer record.</h5>
+	    <h5>You don't have any request record.</h5>
 	</div>
 
 	<ion-grid>
@@ -20,23 +20,21 @@
 			<!-- Profile -->
 			<ion-col col-12>
 				<ion-list>
-					<button ion-item *ngFor="let txn of transactions">
+					<button ion-item *ngFor="let req of requests">
 						<table>
 							<tr>
-								<th class="pull-left">{{txn.created_at | date: 'dd MMM yyyy, h:mm a' }}</th>
-								<th class="pull-right {{txn.type == 'receive' ? 'green' : 'orange'}}">{{txn.amount}} ETP</th>
+								<th class="pull-left">{{req.created_at | date: 'dd MMM yyyy, h:mm a'}}</th>
+								<th class="pull-right green">{{req.amount}} ETP</th>
 							</tr>
 							<tr>
-								<td class="pull-left">
-									<small>TXN: {{txn.receiver_address}}</small>
-								</td>
-								<td class="pull-right">
-									<small>Confirmations: 100</small>
+								<td colspan="2">
+									<small>Email: {{req.email}}</small>
 								</td>
 							</tr>
 							<tr>
-								<td class="pull-left"><small>Remarks: {{txn.description}}</small></td>
-								<td class="pull-right"><small>Fee: 0.0000123</small></td>
+								<td colspan="2">
+									<small>Description: {{req.description}}</small>
+								</td>
 							</tr>
 						</table>
 					</button>
@@ -57,8 +55,8 @@
 		<button ion-fab class="fab-more"><ion-icon name="add"></ion-icon></button>
 		<ion-fab-list side="top">
 			<button ion-fab (click)="openAddForm(fab)" class="fab-child">
-				<ion-icon name="trending-up" type="button"></ion-icon>
-				<ion-label>Transfer ETP</ion-label>
+				<ion-icon name="trending-down" type="button"></ion-icon>
+				<ion-label>Request ETP</ion-label>
 			</button>
 		</ion-fab-list>
 	</ion-fab>
