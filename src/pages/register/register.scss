@@ -1,11 +1,21 @@
 page-register {
+	h2{
+		color: map-get($colors, white);
+		font-size: 3em;
+	}
 	.login-content {
-		background: #56CA96;
+		background: map-get($colors, web-blue);
+		
+		.logo-row {
+			padding-top: 50px;
+			padding-bottom: 20px;
+		}
 		
 		.login-box {
-			background: #509287;
-			padding: 20px 20px 0px 20px;
+			background: map-get($colors, white);
+			padding: 20px;
 			margin-top: 30px;
+			border-radius: 10px !important;
 		}
 		
 		ion-row {
@@ -14,29 +24,42 @@ page-register {
 		}
 		
 		ion-item {
-			border-radius: 30px !important;
-			padding-left: 30px !important;
+			// border-radius: 30px !important;
+			// padding-left: 30px !important;
 			font-size: 0.9em;
+			// margin-bottom: 10px;
+			border: 1px solid map-get($colors, web-grey);
+			// border-bottom: 1px !important;
+			// box-shadow: none !important;
 			margin-bottom: 10px;
-			border: 1px solid #ffffff;
-			border-bottom: 0px !important;
-			box-shadow: none !important;
+		}
+
+		.item:first-child{
+			border-top: 1px solid map-get($colors, web-grey) !important;
 		}
 		
-		.signup-col {
-			margin: 0px 16px 0px 16px;
-			padding-bottom: 20px;
+		.item:last-child{
+			border-bottom: 1px solid map-get($colors, web-grey) !important;
 		}
+		// .signup-col {
+		// 	margin: 0px 16px 0px 16px;
+		// 	padding-bottom: 20px;
+		// }
 		
 		.item-inner {
-			border-bottom-color: #ffffff !important;
+			border-bottom: 1px red !important;
 			box-shadow: none !important;
 		}
 		
 		.submit-btn {
-			background: #51CFB1;
-			border-radius: 30px !important;
+			background: map-get($colors, web-pink);
+			// border-radius: 30px !important;
 			border: 1px solid #ffffff;
+		}
+		
+		.register-btn {
+			color: map-get($colors, web-blue);
+			font-size: 0.8em;
 		}
 	}
 }

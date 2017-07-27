@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "ETP Wallet",
+  "short_name": "ETP Wallet",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
