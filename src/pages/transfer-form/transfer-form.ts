@@ -22,6 +22,11 @@ import swal from 'sweetalert2';
 */
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
+/*
+*	Barcode scanner
+*/
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 /**
  * Generated class for the TransferFormPage page.
  *
@@ -32,6 +37,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  @Component({
  	selector: 'page-transfer-form',
  	templateUrl: 'transfer-form.html',
+ 	providers: [BarcodeScanner]
  })
  export class TransferFormPage {
 
@@ -50,10 +56,22 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 		email: '',
 	};
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public storage:Storage, public http: Http, public userProvider: UserServiceProvider) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public storage:Storage, public http: Http, public userProvider: UserServiceProvider, public barcodeScanner: BarcodeScanner) {
 		this.getUserData();
 		this.userProvider.getToken().then(token => {
 			this.token = token;
+		});
+	}
+
+	public scan() {
+		this.barcodeScanner.scan().then((barcodeData) => {
+			this.formData.address = barcodeData.text;
+		}, (err) => {
+		    swal(
+		    	'Error!',
+		    	err,
+		    	'error'
+		    	);
 		});
 	}
 
