@@ -73,6 +73,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 	public token: any;
 	public loading: any;
 	public disableForm: boolean = true;
+	public overlayHidden: boolean = true;
 
 	updateData = {
 		name: '',
@@ -88,7 +89,13 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 		});
 	}
 
+	public hideOverlay() {
+		this.overlayHidden = !this.overlayHidden;
+	}
+
 	public openCamera(fab?: FabContainer){
+
+		this.hideOverlay();
 
 		if (fab !== undefined) {
 			fab.close();
@@ -102,7 +109,6 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 		}
 
 		this.camera.getPicture(options).then((imageData) => {
-
 			// API Link
 			var updateAvatarUrl = this.apiService.getProfilePictureUpdateAPI();
 
@@ -143,35 +149,37 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 							this.userProvider.getProfile();
 							setTimeout(() => {
 								this.getUserData();
-							},500);
+							},1000);
 						});
-					}
-					else
-					{
-						swal(
-							'Error!',
-							result.message,
-							'error'
-							);
-					}
-
-				}, (err) => {
+				}
+				else
+				{
 					swal(
 						'Error!',
-						err.body,
+						result.message,
 						'error'
 						);
-				});
+				}
+
+			}, (err) => {
+				swal(
+					'Error!',
+					err.body,
+					'error'
+					);
+			});
 		}, (err) => {
 			swal(
 				'Error!',
-				err.body,
+				'Operation canceled',
 				'error'
 				);
 		});
 	}
 
 	public enableEditting(fab?: FabContainer){
+
+		this.hideOverlay();
 
 		if (fab !== undefined) {
 			fab.close();

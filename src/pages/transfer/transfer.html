@@ -1,3 +1,6 @@
+
+<div class="overlay" [hidden]="overlayHidden"></div>
+
 <ion-header>
 	<ion-navbar color="main-theme">
 		<button ion-button menuToggle>
@@ -10,8 +13,8 @@
 <ion-content>
 
 	<div class="emptyMessage" *ngIf="!haveData()">
-	    <ion-icon name="repeat"></ion-icon>
-	    <h5>You don't have any transfer record.</h5>
+		<ion-icon name="repeat"></ion-icon>
+		<h5>You don't have any transfer record.</h5>
 	</div>
 
 	<ion-grid>
@@ -54,7 +57,7 @@
 	</ion-grid>
 
 	<ion-fab right bottom #fab>
-		<button ion-fab class="fab-more"><ion-icon name="add"></ion-icon></button>
+	<button ion-fab class="fab-more" (click)="hideOverlay()"><ion-icon name="add"></ion-icon></button>
 		<ion-fab-list side="top">
 			<button ion-fab (click)="openAddForm(fab)" class="fab-child">
 				<ion-icon name="trending-up" type="button"></ion-icon>
@@ -64,3 +67,4 @@
 	</ion-fab>
 
 </ion-content>
+

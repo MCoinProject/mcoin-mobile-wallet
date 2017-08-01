@@ -1,3 +1,5 @@
+<div class="overlay" [hidden]="overlayHidden"></div>
+
 <ion-header>
 	<ion-navbar color="main-theme">
 		<button ion-button menuToggle>
@@ -52,7 +54,7 @@
 	</ion-grid>
 
 	<ion-fab right bottom #fab>
-		<button ion-fab class="fab-more"><ion-icon name="add"></ion-icon></button>
+		<button ion-fab class="fab-more" (click)="hideOverlay()"><ion-icon name="add"></ion-icon></button>
 		<ion-fab-list side="top">
 			<button ion-fab (click)="openAddForm(fab)" class="fab-child">
 				<ion-icon name="trending-down" type="button"></ion-icon>

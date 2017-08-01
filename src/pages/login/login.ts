@@ -58,7 +58,7 @@ import swal from 'sweetalert2';
 
  	public checkToken(token){
  		this.loading = this.loadingCtrl.create({
- 			content: 'Please wait...',
+ 			content: 'Validating session...',
  			dismissOnPageChange: true
  		});
  		this.loading.present();

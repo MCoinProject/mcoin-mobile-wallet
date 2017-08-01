@@ -69,6 +69,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  	public loading: any;
  	public transactions: any[] = [];
  	public nextUrl: any;
+ 	public overlayHidden: boolean = true;
 
  	apiService:ApiServiceProvider = new ApiServiceProvider();
 
@@ -78,6 +79,10 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  			this.token = token;
  			this.getTransferHistories();
  		});
+ 	}
+
+ 	public hideOverlay() {
+ 		this.overlayHidden = !this.overlayHidden;
  	}
 
  	public haveData(){
@@ -159,14 +164,14 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  	}
 
  	public openAddForm(fab?: FabContainer){
+ 		this.hideOverlay();
+
  		if (fab !== undefined) {
  			fab.close();
  		}
 
  		let modal = this.modalCtrl.create(TransferFormPage);
- 		modal.onDidDismiss(data => {
- 		     
- 		});
+ 		modal.onDidDismiss(data => {});
  		modal.present();
  	}
 
