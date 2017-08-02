@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransferPage } from '../pages/transfer/transfer';
 import { RequestPage } from '../pages/request/request';
+import { StakePage } from '../pages/stake/stake';
 
 // import { ListPage } from '../pages/list/list';
 
@@ -50,6 +51,7 @@ export class WalletApp {
         // { title: 'List', component: ListPage, icon: "list" },
         { title: 'Transfer', component: TransferPage, icon: "trending-up" },
         { title: 'Request', component: RequestPage, icon: "trending-down" },
+        { title: 'Stake', component: StakePage, icon: "logo-buffer" },
         ];
 
     }

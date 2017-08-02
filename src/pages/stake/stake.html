@@ -1,0 +1,66 @@
+<div class="overlay" [hidden]="overlayHidden"></div>
+
+<ion-header>
+	<ion-navbar color="main-theme">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Stake</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<!-- <div class="emptyMessage" *ngIf="!haveData()">
+	    <ion-icon name="repeat"></ion-icon>
+	    <h5>You don't have any stake record.</h5>
+	</div> -->
+
+	<ion-grid>
+		<ion-row>
+
+			<!-- Profile -->
+			<ion-col col-12>
+				<ion-list>
+					<!-- *ngFor="let req of requests" -->
+					<button ion-item (click)="openProfit()">
+						<table>
+							<tr>
+								<!-- req.created_at | date: 'dd MMM yyyy, h:mm a' -->
+								<th class="pull-left">12 June 2017, 09:30 pm</th>
+								<!-- req.amount ETP -->
+								<th class="pull-right green">10 ETP</th>
+							</tr>
+							<tr>
+								<td><small>25 Days 12 Hours 15 minutes left</small></td>
+							</tr>
+						</table>
+					</button>
+
+				</ion-list>
+
+				<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+					<ion-infinite-scroll-content></ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+
+			</ion-col>
+			<!-- / Profile -->
+
+		</ion-row>
+	</ion-grid>
+
+	<ion-fab right bottom #fab>
+		<button ion-fab class="fab-more" (click)="hideOverlay()"><ion-icon name="add"></ion-icon></button>
+		<ion-fab-list side="top">
+			<button ion-fab (click)="openAddForm(fab)" class="fab-child">
+				<ion-icon name="logo-buffer" type="button"></ion-icon>
+				<ion-label>New Stake</ion-label>
+			</button>
+			<button ion-fab (click)="staking(fab)" class="fab-child">
+				<ion-icon name="filing" type="button"></ion-icon>
+				<ion-label>Staking</ion-label>
+			</button>
+		</ion-fab-list>
+	</ion-fab>
+
+</ion-content>

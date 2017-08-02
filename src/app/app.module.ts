@@ -12,6 +12,9 @@ import { TransferPage } from '../pages/transfer/transfer';
 import { TransferFormPage } from '../pages/transfer-form/transfer-form';
 import { RequestPage } from '../pages/request/request';
 import { RequestFormPage } from '../pages/request-form/request-form';
+import { StakePage } from '../pages/stake/stake';
+import { StakeFormPage } from '../pages/stake-form/stake-form';
+import { StakeProfitPage } from '../pages/stake-profit/stake-profit';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -33,6 +36,9 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     TransferFormPage,
     RequestPage,
     RequestFormPage,
+    StakePage,
+    StakeFormPage,
+    StakeProfitPage,
 
     HomePage,
     ListPage
@@ -53,6 +59,9 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     TransferFormPage,
     RequestPage,
     RequestFormPage,
+    StakePage,
+    StakeFormPage,
+    StakeProfitPage,
     
     HomePage,
     ListPage

@@ -40,7 +40,8 @@ import { Storage } from '@ionic/storage';
 /*
 *	Import Page
 */
-import { RequestFormPage } from '../request-form/request-form';
+import { StakeFormPage } from '../stake-form/stake-form';
+import { StakeProfitPage } from '../stake-profit/stake-profit';
 
 /*
 *	API Service
@@ -48,18 +49,18 @@ import { RequestFormPage } from '../request-form/request-form';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
 /**
- * Generated class for the RequestPage page.
+ * Generated class for the StakePage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 
  @Component({
- 	selector: 'page-request',
- 	templateUrl: 'request.html',
+ 	selector: 'page-stake',
+ 	templateUrl: 'stake.html',
  	providers: [DatePipe, DecimalPipe]
  })
- export class RequestPage {
+ export class StakePage {
 
 	/*
 	* variables
@@ -67,7 +68,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 	public user : any;
 	public token: any;
 	public loading: any;
-	public requests: any[] = [];
+	public stakes: any[] = [];
 	public nextUrl: any;
 	public overlayHidden: boolean = true;
 
@@ -86,7 +87,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 	}
 
  	public haveData(){
- 		if (this.requests.length > 0)
+ 		if (this.stakes.length > 0)
  			return true;
 
  		return false;
@@ -114,53 +115,77 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
  		return new Promise(resolve => {
 
- 			var apiLink = "";
+ 		// 	var apiLink = "";
 
-	 		// API Link
-	 		if(this.nextUrl){
-	 			apiLink = this.nextUrl;
-	 		} else {
-	 			this.requests = [];
-	 			apiLink = this.apiService.getRequestHistoriesAPI();
-	 		}
+	 	// 	// API Link
+	 	// 	if(this.nextUrl){
+	 	// 		apiLink = this.nextUrl;
+	 	// 	} else {
+	 	// 		this.stakes = [];
+	 	// 		apiLink = this.apiService.getRequestHistoriesAPI();
+	 	// 	}
 			
-			// Request options
-			let opt: RequestOptions;
-			let header: Headers = new Headers;
+			// // Request options
+			// let opt: RequestOptions;
+			// let header: Headers = new Headers;
 
-			// include token in header
-			header.append('Authorization', 'Bearer '+this.token);
+			// // include token in header
+			// header.append('Authorization', 'Bearer '+this.token);
 
-			opt = new RequestOptions({
-			    headers: header
-			});  
+			// opt = new RequestOptions({
+			//     headers: header
+			// });  
 
 			//  GET Request
-			this.http.get(apiLink, opt)
-			.subscribe(data => {
+			// this.http.get(apiLink, opt)
+			// .subscribe(data => {
 
-			    // parse result
-			    var result = JSON.parse(data['_body']);
+			//     // parse result
+			//     var result = JSON.parse(data['_body']);
 
-			    // if result success
-			    if(result.success){
-			        // this.transactions = result.transaction.data;
-			        for(var indx = 0; indx < result.request.data.length; indx ++){
-			        	this.requests.push(result.request.data[indx]);
-			        }
-			        if(result.request.next_page_url != null){
-			        	this.nextUrl = result.request.next_page_url;
-			        } else {
-			        	this.nextUrl = null;
-			        }
-			    }
+			//     // if result success
+			//     if(result.success){
+			//         // this.transactions = result.transaction.data;
+			//         for(var indx = 0; indx < result.request.data.length; indx ++){
+			//         	this.stakes.push(result.request.data[indx]);
+			//         }
+			//         if(result.request.next_page_url != null){
+			//         	this.nextUrl = result.request.next_page_url;
+			//         } else {
+			//         	this.nextUrl = null;
+			//         }
+			//     }
 
 			    resolve(true);
 
-			}, error => {
-			    console.log(error);
-			});
+			// }, error => {
+			//     console.log(error);
+			// });
 		});
+ 	}
+
+ 	public staking(fab?: FabContainer){
+
+ 		this.hideOverlay();
+ 		
+ 		if (fab !== undefined) {
+ 			fab.close();
+ 		}
+
+ 		swal(
+ 			'Success!',
+ 			'You have staked for today!',
+ 			'success'
+ 			);
+ 	}
+
+ 	public openProfit(fab?: FabContainer){
+
+ 		let modal = this.modalCtrl.create(StakeProfitPage);
+ 		modal.onDidDismiss(data => {
+ 		     
+ 		});
+ 		modal.present();
  	}
 
  	public openAddForm(fab?: FabContainer){
@@ -171,7 +196,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  			fab.close();
  		}
 
- 		let modal = this.modalCtrl.create(RequestFormPage);
+ 		let modal = this.modalCtrl.create(StakeFormPage);
  		modal.onDidDismiss(data => {
  		     
  		});
@@ -179,7 +204,7 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
  	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad RequestPage');
+		console.log('ionViewDidLoad StakePage');
 	}
 
 }

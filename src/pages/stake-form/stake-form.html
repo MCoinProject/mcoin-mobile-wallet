@@ -7,13 +7,9 @@
 <ion-header>
 
 	<ion-navbar color="main-theme">
-		<ion-title>Transfer ETP</ion-title>
+		<ion-title>New Stake</ion-title>
 
 		<ion-buttons end>
-			<button ion-button icon-only color="white" (click)="scan()">
-				<ion-icon name="qr-scanner"></ion-icon>
-			</button>
-
 			<button ion-button icon-only (click)="closeSelf()">
 				<ion-icon name="close"></ion-icon>
 			</button>
@@ -26,24 +22,14 @@
 
 <ion-content class="update-content" padding>
 	<div class="update-box">
-		<form #formTransfer="ngForm" (ngSubmit)="transferRequest()">
+		<form #formStake="ngForm" (ngSubmit)="submitRequest()">
 			<ion-row>
 				<ion-col>
 					<ion-list >
 
 						<ion-item>
-							<ion-label floating>Address</ion-label>
-							<ion-input type="text" name="address" [(ngModel)]="formData.address" required></ion-input>
-						</ion-item>
-
-						<ion-item>
 							<ion-label floating>Amount</ion-label>
 							<ion-input type="number" name="amount" [(ngModel)]="formData.amount" required></ion-input>
-						</ion-item>
-
-						<ion-item>
-							<ion-label floating>Email</ion-label>
-							<ion-input type="email" name="email" [(ngModel)]="formData.email" required></ion-input>
 						</ion-item>
 
 					</ion-list>
@@ -52,7 +38,7 @@
 
 			<ion-row>
 				<ion-col class="signup-col">
-					<button ion-button class="submit-btn" full type="submit" [disabled]="!formTransfer.form.valid">Submit</button>
+					<button ion-button class="submit-btn" full type="submit" [disabled]="!formStake.form.valid">Submit</button>
 				</ion-col>
 			</ion-row>
 
