@@ -4,7 +4,7 @@ page-register {
 		font-size: 3em;
 	}
 	.login-content {
-		background: map-get($colors, web-blue);
+		background: map-get($colors, white);
 		
 		.logo-row {
 			padding-top: 50px;
@@ -52,13 +52,13 @@ page-register {
 		}
 		
 		.submit-btn {
-			background: map-get($colors, web-pink);
+			background: map-get($colors, main-theme);
 			// border-radius: 30px !important;
 			border: 1px solid #ffffff;
 		}
 		
 		.register-btn {
-			color: map-get($colors, web-blue);
+			color: map-get($colors, main-theme);
 			font-size: 0.8em;
 		}
 	}
